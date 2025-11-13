@@ -1,7 +1,12 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { authClient } from "@/lib/auth/client";
 
 const features = [
   {
@@ -22,6 +27,19 @@ const features = [
 ];
 
 export default function Home() {
+  const router = useRouter();
+  const { data } = authClient.useSession();
+
+  useEffect(() => {
+    if (data?.session) {
+      router.replace("/dashboard");
+    }
+  }, [data?.session, router]);
+
+  if (data?.session) {
+    return null;
+  }
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-background via-background to-muted/50">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-20">

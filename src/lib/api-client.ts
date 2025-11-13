@@ -189,3 +189,33 @@ export async function sendChatMessage(message: string): Promise<ChatMessage> {
     },
   );
 }
+
+export async function updateUserProfile(
+  payload: UpdateUserPayload,
+): Promise<void> {
+  if (isMock) {
+    await delay(300);
+    return;
+  }
+
+  await request("/users/me", "PATCH", payload);
+}
+
+export async function changeUserPassword(
+  payload: ChangePasswordPayload,
+): Promise<void> {
+  if (isMock) {
+    await delay(300);
+    return;
+  }
+
+  await request("/users/me/change-password", "POST", payload);
+}
+export type UpdateUserPayload = {
+  name?: string;
+};
+
+export type ChangePasswordPayload = {
+  currentPassword: string;
+  newPassword: string;
+};
