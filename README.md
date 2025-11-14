@@ -22,6 +22,8 @@ Visit [http://localhost:3000](http://localhost:3000) for the marketing page, `/s
 
 Authentication and APIs live on your backend. Point `NEXT_PUBLIC_AUTH_BASE_URL` to the service that exposes your Better Auth router (usually the same origin that powers the HavenMind API) and make sure it is reachable from the browser. Login and signup talk directly to that backend, which issues secure HTTP-only cookies.
 
+The dashboard expects the backend to expose the `/documents` routes documented in the API README. When `NEXT_PUBLIC_API_BASE_URL` is set, the **Home Journal Documents** card uploads PDFs/DOCs/images to the backend. Viewing a document first calls `/documents/:id/url`, which returns a short-lived pre-signed URL so users never hit S3 directly.
+
 ## Environment variables
 
 Create a `.env.local` from the provided example.
@@ -30,7 +32,7 @@ Create a `.env.local` from the provided example.
 | --- | --- |
 | `NEXT_PUBLIC_APP_URL` | Public site URL for this frontend (used in marketing copy/fallbacks). |
 | `NEXT_PUBLIC_AUTH_BASE_URL` | Origin of the backend that runs authentication for HavenMind (e.g., `http://localhost:4000`). |
-| `NEXT_PUBLIC_AUTH_BASE_PATH` | Path segment for the auth route on the backend (defaults to `/api/auth`). |
+| `NEXT_PUBLIC_AUTH_BASE_PATH` | Path segment for the auth route on the backend (defaults to `/auth`). |
 | `NEXT_PUBLIC_API_BASE_URL` | Base URL for the HavenMind API. When unset, the dashboard/chat use mocked property data. Requests include cookies, so enable CORS with credentials if origins differ. |
 
 Run the dev server with `pnpm dev`. The frontend shares the secure session cookie with every fetch call so your API recognizes the signed-in homeowner or operator.
@@ -54,5 +56,6 @@ Run the dev server with `pnpm dev`. The frontend shares the secure session cooki
 ## Next steps
 
 - Swap the mock data with your real maintenance APIs by setting `NEXT_PUBLIC_API_BASE_URL`.
+- Configure `AWS_S3_*` variables on the backend so uploads made from the Home Journal Documents card persist safely.
 - Extend the dashboard cards to show asset-level schedules, invoices, or tenant requests.
 - Stream chat responses from your AI service so the HavenMind copilot can summarize repairs in real time.

@@ -6,6 +6,7 @@ import { ChatPanel } from "@/components/chat/chat-panel";
 import { ActivityFeed } from "@/components/dashboard/activity-feed";
 import { MetricCards } from "@/components/dashboard/metric-cards";
 import { ProjectsCard } from "@/components/dashboard/projects-card";
+import { DocumentCenter } from "@/components/documents/document-center";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { authClient } from "@/lib/auth/client";
 import { useDashboardData } from "@/hooks/use-dashboard-data";
@@ -51,6 +52,7 @@ export function DashboardView() {
           />
         </div>
         <div className="space-y-4 lg:sticky lg:top-24">
+          <DocumentCenter isEnabled={isAuthenticated} />
           <ChatPanel />
         </div>
       </div>

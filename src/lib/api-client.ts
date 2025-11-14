@@ -32,6 +32,16 @@ export type ChatMessage = {
   isOptimistic?: boolean;
 };
 
+export type UserDocument = {
+  id: string;
+  originalName: string;
+  mimeType: string;
+  size: number;
+  url?: string | null;
+  status: "UPLOADED" | "PROCESSING" | "COMPLETE" | "FAILED";
+  createdAt: string;
+};
+
 type AIChatResponse = {
   id?: string;
   role?: "user" | "assistant" | "system";
@@ -229,6 +239,56 @@ export async function changeUserPassword(
   }
 
   await request("/users/me/change-password", "POST", payload);
+}
+
+export async function fetchDocuments(): Promise<UserDocument[]> {
+  if (isMock) {
+    await delay(200);
+    return [];
+  }
+
+  const response = await request<{ documents: UserDocument[] }>("/documents", "GET");
+  return response.documents || [];
+}
+
+export async function uploadDocument(file: File): Promise<UserDocument> {
+  if (!API_BASE_URL) {
+    throw new Error("API base URL is not configured.");
+  }
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const response = await fetch(`${API_BASE_URL}/documents`, {
+    method: "POST",
+    credentials: "include",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || "Upload failed");
+  }
+
+  const payload = (await response.json()) as { document: UserDocument };
+  if (!payload.document) {
+    throw new Error("Malformed upload response");
+  }
+
+  return payload.document;
+}
+
+export async function fetchDocumentViewUrl(documentId: string): Promise<{ url: string; expiresIn: number }> {
+  if (isMock) {
+    await delay(100);
+    return { url: "", expiresIn: 0 };
+  }
+
+  const response = await request<{ url: string; expiresIn: number }>(
+    `/documents/${documentId}/url`,
+    "GET",
+  );
+  return response;
 }
 
 function mapToChatMessage(

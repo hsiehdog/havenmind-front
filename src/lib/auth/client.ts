@@ -10,7 +10,7 @@ const authBaseURL =
 
 export const authClient = createAuthClient({
   baseURL: authBaseURL,
-  basePath: process.env.NEXT_PUBLIC_AUTH_BASE_PATH || "/api/auth",
+  basePath: process.env.NEXT_PUBLIC_AUTH_BASE_PATH || "/auth",
   fetchOptions: {
     credentials: "include",
   },
