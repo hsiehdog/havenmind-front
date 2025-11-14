@@ -25,13 +25,13 @@ export default function SignupPage() {
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-10 text-center">
         <div className="space-y-4">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Fast onboarding
+            Create your HavenMind account
           </p>
           <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
-            Build AI-driven software faster than ever
+            Turn scattered home data into a proactive plan
           </h1>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            Create your workspace, wire Better Auth into the backend, and start testing chat-based workflows instantly.
+            Invite your team, upload inspections or receipts, and let HavenMind build the maintenance plan, reminders, and Home Health Score automatically.
           </p>
         </div>
 

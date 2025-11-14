@@ -24,17 +24,17 @@ export function DashboardView() {
               Hey {data?.user?.name || "there"},
             </CardTitle>
             <CardDescription>
-              Monitor usage, deployments, and collaborate with the AI operator in one view.
+              Track maintenance plans, repair requests, and collaboration threads without leaving your HavenMind cockpit.
             </CardDescription>
           </div>
           <div className="hidden rounded-full border px-4 py-2 text-sm font-medium md:flex md:items-center md:gap-2">
             <Sparkles className="h-4 w-4 text-primary" />
-            AI ready
+            Home Health Score
           </div>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground">
-          Your Better Auth session cookie is reused when calling your backend. Configure{" "}
-          <code className="rounded bg-muted px-1 py-0.5 text-xs">NEXT_PUBLIC_API_BASE_URL</code> if you want to hit a remote API.
+          Connect your HavenMind API by setting{" "}
+          <code className="rounded bg-muted px-1 py-0.5 text-xs">NEXT_PUBLIC_API_BASE_URL</code>. Every request reuses the secure auth session so property data stays in sync.
         </CardContent>
       </Card>
 

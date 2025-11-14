@@ -46,13 +46,11 @@ export function AuthForm({ mode }: AuthFormProps) {
   });
 
   const formTitle =
-    mode === "login"
-      ? "Welcome back"
-      : "Create an account for the AI Control Center";
+    mode === "login" ? "Welcome back" : "Create your HavenMind account";
   const formDescription =
     mode === "login"
-      ? "Sign in to review usage, manage projects, and chat with your AI copilots."
-      : "Kick-start your workspace in seconds. Better Auth keeps your credentials safe by default.";
+      ? "Sign in to review maintenance plans, collaborate with pros, and keep the Home Journal up to date."
+      : "Invite your team and keep inspections, receipts, and reminders organized from day one.";
 
   const primaryAction = mode === "login" ? "Sign in" : "Create account";
   const secondaryCta =
@@ -176,8 +174,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             <p className="text-sm text-destructive">{error}</p>
           ) : (
             <p className="text-sm text-muted-foreground">
-              Passwords are stored using Better Auth&apos;s secure hashing
-              defaults.
+              Passwords are stored with industry-standard hashing and never shared outside HavenMind.
             </p>
           )}
 

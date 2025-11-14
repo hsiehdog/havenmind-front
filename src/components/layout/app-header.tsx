@@ -46,7 +46,7 @@ export function AppHeader() {
         <div className="flex items-center gap-4">
           <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
             <MessageSquareMore className="h-5 w-5 text-primary" />
-            <span>AI Control Center</span>
+            <span>HavenMind</span>
             <Badge variant="outline" className="text-xs">
               beta
             </Badge>

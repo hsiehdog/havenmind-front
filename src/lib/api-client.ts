@@ -21,7 +21,7 @@ export type ActivityItem = {
   title: string;
   description: string;
   timestamp: string;
-  category: "deployment" | "alert" | "usage";
+  category: "maintenance" | "journal" | "alert";
 };
 
 export type ChatMessage = {
@@ -82,55 +82,55 @@ async function request<T>(
 
 const mockData = {
   usage: [
-    { id: "tokens", label: "Tokens processed", value: "1.2M", delta: 12 },
-    { id: "latency", label: "Avg. latency", value: "820ms", delta: -4 },
-    { id: "users", label: "Active users", value: "864", delta: 8 },
-    { id: "costs", label: "Spend this week", value: "$1,870", delta: -2 },
+    { id: "tasks", label: "Upcoming tasks", value: "32", delta: 18 },
+    { id: "overdue", label: "Overdue items", value: "3", delta: -25 },
+    { id: "documents", label: "Documents indexed", value: "214", delta: 9 },
+    { id: "health", label: "Avg. Home Health Score", value: "92", delta: 4 },
   ] satisfies UsageMetric[],
   projects: [
     {
-      id: "copilot",
-      name: "Developer Copilot",
+      id: "maple",
+      name: "Maple Street Craftsman",
       status: "online",
-      updatedAt: "2 minutes ago",
-      owner: "Platform",
+      updatedAt: "HVAC tune-up · 2h ago",
+      owner: "Henderson family",
     },
     {
-      id: "agenthub",
-      name: "Agent Hub",
+      id: "lakeside",
+      name: "Lakeside Duplex",
       status: "degraded",
-      updatedAt: "8 minutes ago",
-      owner: "Automation",
+      updatedAt: "Roof leak check · 8m ago",
+      owner: "Lakeside PM",
     },
     {
-      id: "insights",
-      name: "Insights Assistant",
+      id: "loft",
+      name: "Downtown Loft",
       status: "paused",
-      updatedAt: "45 minutes ago",
-      owner: "Revenue",
+      updatedAt: "Renovation hold · 45m ago",
+      owner: "Northwind Realty",
     },
   ] satisfies ProjectSummary[],
   activity: [
     {
-      id: "deploy-1",
-      title: "New agent deployed",
-      description: "v0.12.4 rolled out to production",
+      id: "maint-1",
+      title: "Water heater flushed",
+      description: "Receipt added to the Home Journal for Maple Street",
       timestamp: "Today · 10:42 AM",
-      category: "deployment",
+      category: "maintenance",
     },
     {
       id: "alert-1",
-      title: "Latency spike detected",
-      description: "LLM provider response time exceeded SLO",
+      title: "HVAC filter overdue",
+      description: "Lakeside Duplex is 12 days past the recommended change",
       timestamp: "Today · 9:17 AM",
       category: "alert",
     },
     {
-      id: "usage-1",
-      title: "Usage milestone",
-      description: "Surpassed 1M prompts this week",
+      id: "journal-1",
+      title: "Inspection uploaded",
+      description: "New roof report attached to Downtown Loft",
       timestamp: "Yesterday · 6:03 PM",
-      category: "usage",
+      category: "journal",
     },
   ] satisfies ActivityItem[],
   chat: [
@@ -138,7 +138,7 @@ const mockData = {
       id: "intro-1",
       role: "assistant",
       content:
-        "Hi! Ask me anything about your AI workloads—deployments, tokens, incidents, or experimentation.",
+        "Hi! I’m HavenMind. Ask me what to prep for this season, which warranties are expiring, or how your Home Health Score is trending.",
       createdAt: new Date().toISOString(),
     },
   ] satisfies ChatMessage[],
@@ -193,7 +193,7 @@ export async function sendChatMessage(message: string): Promise<ChatMessage> {
       id: crypto.randomUUID(),
       role: "assistant",
       content:
-        "Here’s a mocked response describing what your managed LLM endpoint would have answered.",
+        "Here’s a mocked HavenMind response. In production this is where we would summarize the task, recommend trusted pros, or log the action to the Home Journal.",
       createdAt: new Date().toISOString(),
     };
   }

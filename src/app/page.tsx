@@ -10,19 +10,19 @@ import { authClient } from "@/lib/auth/client";
 
 const features = [
   {
-    title: "Authentication ready",
+    title: "Smart document intake",
     description:
-      "Better Auth issues secure session cookies out of the box, so your browser forwards credentials automatically.",
+      "Upload inspections, receipts, or manuals and HavenMind extracts systems, service dates, and warranty periods automatically.",
   },
   {
-    title: "Operator dashboard",
+    title: "Proactive maintenance plans",
     description:
-      "Visualize usage, deployments, and events across AI services. Tailwind and shadcn components keep things consistent.",
+      "AI turns raw data into a personalized upkeep schedule, sends reminders, and boosts your Home Health Score before things break.",
   },
   {
-    title: "AI copilots",
+    title: "Collaboration in one place",
     description:
-      "Drop-in chat surface that can call your LLM API using the authenticated user’s identity.",
+      "Assign work to pros or tenants, share photos, and track every receipt or approval from the same dashboard.",
   },
 ];
 
@@ -45,20 +45,20 @@ export default function Home() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-20">
         <section className="space-y-8 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Infrastructure for AI-driven software
+            AI-powered home maintenance
           </p>
           <div className="space-y-4">
             <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">
-              Launch dashboards, chat surfaces, and auth in minutes
+              Keep every property organized, maintained, and worry-free
             </h1>
             <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-              A Next.js + TypeScript starter that blends Better Auth, Tailwind, and shadcn/ui. Use it to bootstrap internal tooling,
-              AI copilots, or full SaaS products without reinventing your foundation.
+              HavenMind combines document intelligence, proactive reminders, and simple collaboration tools so homeowners and property
+              managers can prevent breakdowns, control costs, and preserve long-term value.
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button asChild size="lg">
-              <Link href="/signup">Create workspace</Link>
+              <Link href="/signup">Get started</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link href="/login">Sign in</Link>
@@ -80,26 +80,19 @@ export default function Home() {
         <section className="rounded-3xl border bg-background/70 p-6 shadow-lg">
           <Card className="border-none bg-transparent shadow-none">
             <CardHeader>
-              <CardTitle>Plug in your backend</CardTitle>
+              <CardTitle>How HavenMind works</CardTitle>
               <CardDescription>
-                Point <code className="rounded bg-muted px-2 py-1 text-xs">NEXT_PUBLIC_AUTH_BASE_URL</code> (and optional{" "}
-                <code className="rounded bg-muted px-2 py-1 text-xs">NEXT_PUBLIC_AUTH_BASE_PATH</code>) to your backend&apos;s Better Auth route, then call your APIs with the Better Auth session cookie automatically included.
+                Upload documents, log repairs, or message a pro and HavenMind automatically updates the Home Journal, schedules tasks, and raises reminders before deadlines slip.
               </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-3 text-sm text-muted-foreground md:grid-cols-2">
               <div>
-                <p className="font-semibold text-foreground">Authentication</p>
-                <p>
-                  Better Auth runs on your backend. Expose it via{" "}
-                  <code className="rounded bg-muted px-1">
-                    NEXT_PUBLIC_AUTH_BASE_URL + NEXT_PUBLIC_AUTH_BASE_PATH
-                  </code>{" "}
-                  so the frontend can call it.
-                </p>
+                <p className="font-semibold text-foreground">Document intelligence</p>
+                <p>Send HavenMind inspections, warranties, or receipts. The AI extracts systems, warranty windows, and service history so nothing gets lost.</p>
               </div>
               <div>
-                <p className="font-semibold text-foreground">AI orchestration</p>
-                <p>Dashboard & chat components call your API through a typed helper that automatically forwards the signed session cookie.</p>
+                <p className="font-semibold text-foreground">Coordinated upkeep</p>
+                <p>Plan recurring tasks, assign techs, share photos, and build a searchable Home Journal that powers the Home Health Score.</p>
               </div>
             </CardContent>
           </Card>

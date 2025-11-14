@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Control Center",
+  title: "HavenMind | Home Maintenance Copilot",
   description:
-    "Starter kit for AI-driven applications with Next.js, Better Auth, shadcn/ui, and a chat-ready dashboard.",
+    "HavenMind is an AI-powered home maintenance platform that organizes documents, plans proactive tasks, and keeps every property worry-free.",
 };
 
 export default function RootLayout({

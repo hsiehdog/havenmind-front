@@ -20,13 +20,18 @@ const statusStyles: Record<ProjectSummary["status"], string> = {
   degraded: "bg-amber-100 text-amber-700 dark:bg-amber-500/10",
   paused: "bg-slate-200 text-slate-700 dark:bg-slate-500/20",
 };
+const statusLabels: Record<ProjectSummary["status"], string> = {
+  online: "On track",
+  degraded: "Needs attention",
+  paused: "Paused",
+};
 
 export function ProjectsCard({ projects, isLoading }: ProjectsCardProps) {
   return (
     <Card className="border-muted">
       <CardHeader>
-        <CardTitle>AI services</CardTitle>
-        <CardDescription>Track deployments across teams</CardDescription>
+        <CardTitle>Properties & systems</CardTitle>
+        <CardDescription>See which homes and assets are on schedule</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         {isLoading &&
@@ -43,11 +48,11 @@ export function ProjectsCard({ projects, isLoading }: ProjectsCardProps) {
               <div>
                 <p className="font-medium">{project.name}</p>
                 <p className="text-sm text-muted-foreground">
-                  Owned by {project.owner} · Updated {project.updatedAt}
+                  Managed by {project.owner} · Updated {project.updatedAt}
                 </p>
               </div>
               <Badge className={cn("capitalize", statusStyles[project.status])}>
-                {project.status}
+                {statusLabels[project.status]}
               </Badge>
             </div>
           ))}

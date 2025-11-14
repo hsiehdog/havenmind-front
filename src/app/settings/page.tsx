@@ -107,7 +107,7 @@ export default function SettingsPage() {
           <div>
             <h1 className="text-2xl font-semibold tracking-tight">Account settings</h1>
             <p className="text-sm text-muted-foreground">
-              Update your profile and session preferences. Everything here saves straight to your backend.
+              Keep your HavenMind profile and credentials current so collaborators always know who is requesting work.
             </p>
           </div>
 
@@ -115,7 +115,7 @@ export default function SettingsPage() {
             <Card>
               <CardHeader>
                 <CardTitle>Profile</CardTitle>
-                <CardDescription>Basic details that other teammates can see.</CardDescription>
+                <CardDescription>Shared with co-owners, property managers, and preferred pros.</CardDescription>
               </CardHeader>
               <CardContent>
                 <form className="space-y-4" onSubmit={handleProfileSubmit}>
@@ -149,7 +149,7 @@ export default function SettingsPage() {
             <Card>
               <CardHeader>
                 <CardTitle>Session</CardTitle>
-                <CardDescription>Reset your password whenever needed.</CardDescription>
+                <CardDescription>Reset your password to protect access to every property record.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <form className="space-y-4" onSubmit={handlePasswordSubmit}>
